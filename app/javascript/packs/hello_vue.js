@@ -34,6 +34,8 @@
 
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
+import _ from 'lodash'
+import axios from 'axios'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
