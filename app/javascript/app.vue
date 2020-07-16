@@ -27,10 +27,36 @@
         <button @click='removeTodo(index)'>Remove</button>
       </li>
     </ul>
+    <hr>
+
+    <button @click='say("hi", $event)'>Say hi</button>
+    <br>
+    <my-component
+      :input-data='"param from parent"'
+      v-on:from-child='onCallback'
+    >My c</my-component>
+    <hr>
+
+    <div>
+      state
+      count={{ count }}
+      doneTodosCount={{ doneTodosCount }}
+      <button @click='incrementCount'>Increment count</button>
+      <button @click='decrementCount'>Decrement count</button>
+      <button @click='incrementAsync'>IncrementAsync</button>
+      <button @click='actionB'>actionB</button>
+      <button @click='changeCountWithoutMutation'>changeCountWithoutMutation</button>
+      <br>
+      {{ vuexData }}
+      <input v-model='vuexData'>
+    </div>
   </div>
 </template>
 
 <script>
+import MyComponent from 'components/my-component.vue'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+
 export default {
   data: function () {
     return {
@@ -43,6 +69,19 @@ export default {
       todos: ['first todo', 'second todo']
     }
   },
+  computed: {
+    ...mapState(['count', 'storeTodos']),
+    ...mapGetters(['doneTodos', 'doneTodosCount']),
+    vuexData: {
+      get () {
+        return this.$store.state.vuexData
+      },
+      set (value) {
+        this.$store.commit('updateVuexData', value)
+      }
+    }
+  },
+  components: {MyComponent},
   watch: {
     question: function(newQuestion, oldQuestion) {
       this.answer = 'Waiting for you to stop typing'
@@ -83,7 +122,25 @@ export default {
     },
     removeTodo: function(index) {
       this.todos.splice(index, 1)
-    }
+    },
+
+    say: function(e, message) {
+      alert(message)
+    },
+
+    onCallback: function(param) {
+      alert(param)
+    },
+
+    ...mapMutations({
+      incrementCount: 'increment',
+      decrementCount: 'decrement',
+    }),
+    ...mapActions([
+      'incrementAsync',
+      'actionB',
+      'changeCountWithoutMutation',
+    ]),
   }
 
 }
