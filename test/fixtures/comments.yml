@@ -1,0 +1,7 @@
+DEFAULTS: &DEFAULTS
+  content: $LABEL content
+
+my_comment:
+  <<: *DEFAULTS
+  user: my_user
+  post: my_post

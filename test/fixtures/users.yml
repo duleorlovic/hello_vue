@@ -1,0 +1,9 @@
+DEFAULTS: &DEFAULTS
+  email: $LABEL@email.com
+
+admin:
+  <<: *DEFAULTS
+  admin: true
+
+my_user:
+  <<: *DEFAULTS
