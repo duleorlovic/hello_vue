@@ -2,7 +2,9 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
+
 const store = new Vuex.Store({
+  // use strict mode to raise error when you change state without mutation
   strict: process.env.NODE_ENV !== 'production',
   state: {
     count: 0,
