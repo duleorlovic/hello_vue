@@ -49,6 +49,20 @@
       <br>
       {{ vuexData }}
       <input v-model='vuexData'>
+      <hr>
+      Transition
+      <button @click=' show = !show '>Toggle</button>
+      <transition name='trk'>
+        <p v-if='show'>Hello</p>
+      </transition>
+      <transition
+      >
+        <p v-if='show'>Hello</p>
+      </transition>
+      <hr>
+      <router-link to='/my-dash'>Open my Dash</router-link>
+      <router-link to='/bar'>Open bar</router-link>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -66,7 +80,8 @@ export default {
       loginType: 'username',
 
       newTodo: '',
-      todos: ['first todo', 'second todo']
+      todos: ['first todo', 'second todo'],
+      show: false,
     }
   },
   computed: {

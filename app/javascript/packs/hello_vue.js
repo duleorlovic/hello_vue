@@ -37,8 +37,12 @@ import Vuex from 'vuex'
 import App from '../app.vue'
 import _ from 'lodash'
 import axios from 'axios'
+import VueRouter from 'vue-router'
+import MyDash from 'components/my-dash.vue'
+import Settings from 'components/my-dash/settings.vue'
 
 Vue.use(Vuex)
+Vue.use(VueRouter)
 
 document.addEventListener('DOMContentLoaded', () => {
   const moduleA = {
@@ -103,13 +107,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   })
+  const routes = [
+    {
+      path: '/my-dash', component: MyDash,
+      children: [
+        {
+
+          path: 'profile',
+          component: { template: '<div>profile<router-view></router-view></div>' },
+          children: [
+            {
+              path: '',
+              component: { template: '<div>default</div>' }
+            },
+            {
+              path: 'me',
+              component: { template: '<div>me</div>' }
+            },
+            {
+              path: 'team',
+              component: { template: '<div>team</div>' }
+            }
+          ]
+        },
+        {
+          path: 'settings',
+          component: Settings
+        }
+      ]
+    },
+    { path: '/bar', component: { template: '<div>bar</div>' } }
+  ]
+  const router = new VueRouter({
+    mode: 'history',
+    routes
+  })
   const app = new Vue({
     el: '#hello',
     data: {
       message: "Can you say hello?"
     },
     components: { App },
-    store
+    store,
+    router
   })
 })
 //
