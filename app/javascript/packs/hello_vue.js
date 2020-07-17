@@ -34,120 +34,21 @@
 
 import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
-import App from '../app.vue'
 import _ from 'lodash'
-import axios from 'axios'
 import VueRouter from 'vue-router'
-import MyDash from 'components/my-dash.vue'
-import Settings from 'components/my-dash/settings.vue'
+import 'stylesheet/application'
+import router from '../router'
+import store from '../store'
 
-Vue.use(Vuex)
 Vue.use(VueRouter)
 
 document.addEventListener('DOMContentLoaded', () => {
-  const moduleA = {
-    state: {
-      count: 1
-    }
-  }
-  const store = new Vuex.Store({
-    strict: process.env.NODE_ENV !== 'production',
-    modules: {
-      a: moduleA
-    },
-    state: {
-      count: 0,
-      storeTodos: [
-        { id: 1, text: 'first', done: true },
-        { id: 2, text: 'second', done: false }
-      ],
-      vuexData: 'Initial vuex data'
-    },
-    getters: {
-      doneTodos: state => {
-        return state.storeTodos.filter(todo => todo.done)
-      },
-      doneTodosCount: (state, getters) => {
-        return getters.doneTodos.length
-      }
-    },
-    mutations: {
-      increment (state) {
-        state.count++
-      },
-      decrement (state) {
-        state.count--
-      },
-      updateVuexData (state, value) {
-        state.vuexData = value
-      }
-    },
-    actions: {
-      incrementAsync (context) {
-        setTimeout(function() {
-          context.commit('increment')
-        }, 1000)
-      },
-      actionA ({ commit }) {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            commit('increment')
-            resolve()
-          }, 1000)
-        })
-      },
-      actionB ({ dispatch, commit }) {
-        dispatch('actionA').then(() => {
-          commit('increment')
-        })
-      },
-
-      changeCountWithoutMutation ({ state }) {
-        state.count += 1
-      }
-    }
-  })
-  const routes = [
-    {
-      path: '/my-dash', component: MyDash,
-      children: [
-        {
-
-          path: 'profile',
-          component: { template: '<div>profile<router-view></router-view></div>' },
-          children: [
-            {
-              path: '',
-              component: { template: '<div>default</div>' }
-            },
-            {
-              path: 'me',
-              component: { template: '<div>me</div>' }
-            },
-            {
-              path: 'team',
-              component: { template: '<div>team</div>' }
-            }
-          ]
-        },
-        {
-          path: 'settings',
-          component: Settings
-        }
-      ]
-    },
-    { path: '/bar', component: { template: '<div>bar</div>' } }
-  ]
-  const router = new VueRouter({
-    mode: 'history',
-    routes
-  })
   const app = new Vue({
     el: '#hello',
     data: {
-      message: "Can you say hello?"
+      message: 'Welcome to hello_vue',
+      user: null
     },
-    components: { App },
     store,
     router
   })

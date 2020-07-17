@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import MyComponent from 'components/my-component.vue'
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 

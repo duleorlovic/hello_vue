@@ -1,7 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 <%= javascript_pack_tag 'hello_vue' %>
 <div id='hello'>
-  {{message}}
-  <app></app>
+  <p class='float-right'>Find me in app/views/pages/home.html.erb</p>
+  <router-link to='/'>Home</router-link>
+  <span v-if='user'>
+    Hi {{ this.$store.state.user.email }}
+  </span>
+  <span v-else>
+    <router-link to='/log-in'>Log In</router-link>
+    <router-link to='/sign-up'>Sign up</router-link>
+  </span>
+  <div>
+    {{message}}
+  </div>
+  <router-view></router-view>
 </div>
