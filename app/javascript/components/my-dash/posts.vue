@@ -84,10 +84,9 @@ export default {
     showUpdatePost (post) {
       this.post_to_update = post
       this.update_title = post.title
-      const vm = this
-      setTimeout(function() {
-        vm.$refs['new-title'].focus()
-      }, 0)
+      this.$nextTick(() => {
+        this.$refs['new-title'].focus()
+      })
     }
   }
 }

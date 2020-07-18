@@ -33,8 +33,12 @@
 
 
 import Vue from 'vue/dist/vue.esm'
+import _ from 'lodash'
+_
 import VueRouter from 'vue-router'
 import VueNotification from 'vue-notification'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Vuelidate from 'vuelidate'
 
 import 'stylesheet/application'
 import router from '../router'
@@ -42,6 +46,9 @@ import store from '../store/index'
 
 Vue.use(VueRouter)
 Vue.use(VueNotification)
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(Vuelidate)
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({

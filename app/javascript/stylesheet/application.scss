@@ -1,16 +1,19 @@
-@tailwind base;
+// @tailwind base;
 
-input {
-  @apply border;
-}
-button {
-  @apply bg-gray-200 p-2;
-}
-a {
-  @apply bg-gray-400;
-}
+// input {
+//   @apply border;
+// }
+// button {
+//   @apply bg-gray-200 p-2;
+// }
+// a {
+//   @apply bg-gray-400;
+// }
 
-@tailwind components;
+// @tailwind components;
 
-@tailwind utilities;
+// @tailwind utilities;
+
+@import '~bootstrap';
+@import '~bootstrap-vue';
 

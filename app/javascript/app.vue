@@ -22,7 +22,7 @@
       <button>Add Todo</button>
     </form>
     <ul>
-      <li v-for='(todo, index) in todos'>
+      <li v-for='(todo, index) in todos' :key='todo'>
         {{ todo }}
         <button @click='removeTodo(index)'>Remove</button>
       </li>
