@@ -86,11 +86,14 @@ export default {
     }
   },
   computed: {
-    ...mapState(['count', 'storeTodos']),
+    ...mapState({
+      count: state => state.home.count,
+      storeTodos: state => state.home.storeTodos
+    }),
     ...mapGetters(['doneTodos', 'doneTodosCount']),
     vuexData: {
       get () {
-        return this.$store.state.vuexData
+        return this.$store.state.home.vuexData
       },
       set (value) {
         this.$store.commit('updateVuexData', value)

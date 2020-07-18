@@ -1,11 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  // use strict mode to raise error when you change state without mutation
-  strict: process.env.NODE_ENV !== 'production',
+export default {
   state: {
     count: 0,
     storeTodos: [
@@ -13,7 +6,6 @@ const store = new Vuex.Store({
       { id: 2, text: 'second', done: false }
     ],
     vuexData: 'Initial vuex data',
-    user: {}
   },
   getters: {
     doneTodos: state => {
@@ -58,6 +50,4 @@ const store = new Vuex.Store({
       state.count += 1
     }
   }
-})
-
-export default store
+}

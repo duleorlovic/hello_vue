@@ -3,7 +3,7 @@
   <p class='float-right'>Find me in app/views/pages/home.html.erb</p>
   <router-link to='/'>Home</router-link>
   <span v-if='user'>
-    Hi {{ this.$store.state.user.email }}
+    Hi {{ user.email }}
   </span>
   <span v-else>
     <router-link to='/log-in'>Log In</router-link>

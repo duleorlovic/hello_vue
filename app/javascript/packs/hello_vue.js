@@ -38,7 +38,8 @@ import _ from 'lodash'
 import VueRouter from 'vue-router'
 import 'stylesheet/application'
 import router from '../router'
-import store from '../store'
+import store from '../store/index'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 Vue.use(VueRouter)
 
@@ -47,7 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     el: '#hello',
     data: {
       message: 'Welcome to hello_vue',
-      user: null
+    },
+    computed: {
+      ...mapState(['user'])
+    },
+    created(){
+      this.$store.dispatch('GET_USER')
     },
     store,
     router
