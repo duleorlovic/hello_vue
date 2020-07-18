@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+axios.defaults.xsrfCookieName = "CSRF-TOKEN";
+axios.defaults.xsrfHeaderName = "X-CSRF-Token";
+axios.defaults.withCredentials = true;
+
 const BASE_PATH = '/api';
 
 export default {
@@ -7,16 +11,16 @@ export default {
   getUser() {
     return axios.get(`${BASE_PATH}/user`)
   },
-  updateUser(payload) {
-    return axios.put(`${BASE_PATH}/user`, payload)
-  },
-  signup(payload) {
-    return axios.post(`${BASE_PATH}/signup`, payload)
-  },
   login(payload) {
     return axios.post(`${BASE_PATH}/login`, payload)
   },
   logout() {
     return axios.delete(`${BASE_PATH}/logout`)
-  }
+  },
+  signup(payload) {
+    return axios.post(`${BASE_PATH}/signup`, payload)
+  },
+  updateUser(payload) {
+    return axios.put(`${BASE_PATH}/user`, payload)
+  },
 }

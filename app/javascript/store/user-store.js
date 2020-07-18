@@ -8,6 +8,9 @@ export default {
   mutations: {
     SET_USER: (state, user) => {
       Vue.set(state, 'email', user.email)
+    },
+    REMOVE_USER: (state) => {
+      Vue.set(state, 'email', null)
     }
   },
   actions: {

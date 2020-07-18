@@ -3,7 +3,7 @@ class Api::UserController < ApplicationController
     if current_user
       render json: {email: current_user.email}
     else
-      render json: { email: 'asd@asd.asd'}
+      render json: {}
     end
   end
 end

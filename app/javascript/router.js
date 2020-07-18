@@ -3,6 +3,7 @@ import MyDash from 'components/my-dash.vue'
 import Settings from 'components/my-dash/settings.vue'
 import App from './app.vue'
 import LogIn from 'components/log-in.vue'
+import LogOut from 'components/log-out.vue'
 import SignUp from 'components/sign-up.vue'
 const router = new VueRouter({
   mode: 'history',
@@ -12,6 +13,9 @@ const router = new VueRouter({
     },
     {
       path: '/log-in', component: LogIn,
+    },
+    {
+      path: '/log-out', component: LogOut,
     },
     {
       path: '/sign-up', component: SignUp,
