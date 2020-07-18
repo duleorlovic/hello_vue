@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import MyDash from 'components/my-dash.vue'
+import Posts from 'components/my-dash/posts.vue'
 import Settings from 'components/my-dash/settings.vue'
 import App from './app.vue'
 import LogIn from 'components/log-in.vue'
@@ -24,9 +25,13 @@ const router = new VueRouter({
       path: '/my-dash', component: MyDash,
       children: [
         {
+          path: '',
+          component: Posts
+        },
+        {
 
           path: 'profile',
-          component: { template: '<div>profile<router-view></router-view></div>' },
+          component: { template: '<div>profile<transition name="slide-left"><router-view class="child-view"></router-view></transition></div>' },
           children: [
             {
               path: '',

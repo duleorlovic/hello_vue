@@ -23,4 +23,17 @@ export default {
   updateUser(payload) {
     return axios.put(`${BASE_PATH}/user`, payload)
   },
+  // Posts
+  getPosts() {
+    return axios.get(`${BASE_PATH}/posts`)
+  },
+  deletePost(id) {
+    return axios.delete(`${BASE_PATH}/posts/${id}`)
+  },
+  createPost(data) {
+    return axios.post(`${BASE_PATH}/posts`, data)
+  },
+  updatePost(id, payload) {
+    return axios.put(`${BASE_PATH}/posts/${id}`, payload)
+  }
 }

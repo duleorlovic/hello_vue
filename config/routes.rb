@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   scope :api, module: :api, defaults: {format: :json} do
     get 'user', to: 'user#show'
     put 'user', to: 'user#update'
+
+    resources :posts
   end
   scope :api, defaults: {format: :json} do
     devise_scope :user do
