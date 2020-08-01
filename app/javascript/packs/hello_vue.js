@@ -39,53 +39,41 @@ import VueRouter from 'vue-router'
 import VueNotification from 'vue-notification'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Vuelidate from 'vuelidate'
+import TurbolinksAdapter from 'vue-turbolinks'
 
 import 'stylesheet/application'
 import router from '../router'
 import store from '../store/index'
 
+import AppComponent from '../components/app-component'
+
+Vue.component('app-component', AppComponent)
+Vue.use(TurbolinksAdapter)
 Vue.use(VueRouter)
 Vue.use(VueNotification)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuelidate)
 
-document.addEventListener('DOMContentLoaded', () => {
-  new Vue({
-    el: '#hello',
-    data: {
-      message: 'Welcome to hello_vue',
-    },
-    created(){
-      this.$store.dispatch('GET_USER')
-    },
-    store,
-    router
+document.addEventListener('turbolinks:load', () => {
+  const element = document.getElementById('hello')
+  if (element != null) {
+    const vue = new Vue({
+      el: '#hello',
+      data: {
+        message: 'Welcome to hello_vue',
+      },
+      created(){
+        this.$store.dispatch('GET_USER')
+      },
+      store,
+      router
+    })
+    console.log('loading vue')
+    vue
+  }
+  const globalVue = new Vue({
+    el: '[data-behavior="vue"]',
   })
+  globalVue
 })
-//
-//
-//
-// If the project is using turbolinks, install 'vue-turbolinks':
-//
-// yarn add vue-turbolinks
-//
-// Then uncomment the code block below:
-//
-// import TurbolinksAdapter from 'vue-turbolinks'
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// Vue.use(TurbolinksAdapter)
-//
-// document.addEventListener('turbolinks:load', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: () => {
-//       return {
-//         message: "Can you say hello?"
-//       }
-//     },
-//     components: { App }
-//   })
-// })

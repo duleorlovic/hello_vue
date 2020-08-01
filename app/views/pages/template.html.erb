@@ -1,0 +1,11 @@
+<%= link_to 'Home', root_path %>
+<h1>Template</h1>
+
+<app-component :numbers='<%= [1, 2].to_json %>'>
+  <template v-slot:header>Initial header</template>
+  Initial default slot
+  <template v-slot:footer='slotProps'>
+    Initial footer
+    {{ slotProps.numbers1 }}
+  </template>
+</app-component>

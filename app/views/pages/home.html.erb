@@ -1,8 +1,8 @@
-<%= javascript_pack_tag 'hello_vue' %>
 <div id='hello'>
   <p class='trk-red float-right'>Find me in app/views/pages/home.html.erb</p>
   <notifications group='alert' position='top center'></notifications>
   <router-link to='/'>Home</router-link>
+  <%= link_to 'Template', pages_template_path %>
   <span v-if='this.$store.state.user.email'>
     Hi {{ this.$store.state.user.email }}
     <router-link to='/log-out'>Log out</router-link>

@@ -68,8 +68,7 @@ export default {
         this.$store.commit('SET_USER', data)
         this.$router.push('/my-dash')
       }).catch((error) => {
-        util.alert(`Sign up error: ${error.toString()} (probably email has been
-        taken)`)
+        util.alert(`Sign up error: ${error.toString()}`)
       })
     }
   }
