@@ -9,7 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "tailwindcss": "^1.5.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
